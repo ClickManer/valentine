@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Колесо свиданий ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ КОЛЕСА */
+        .wheel-simple {
+            background: white;
+            border-radius: 48px;
+            padding: 40px 30px;
+            margin: 30px 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+            text-align: center;
+        }
+        
+        .prize-label {
+            background: #d32f2f;
+            color: white;
+            display: inline-block;
+            padding: 12px 36px;
+            border-radius: 60px;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            border: 4px solid white;
+            box-shadow: 0 8px 0 #8b1e1e;
+            text-transform: uppercase;
+        }
+        
+        /* СЕТКА С ВАРИАНТАМИ */
+        .wheel-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .wheel-item {
+            background: #ffebee;
+            padding: 20px 15px;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #b71c1c;
+            border: 3px solid white;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+        }
+        
+        .wheel-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(211,47,47,0.2);
+        }
+        
+        .wheel-item.selected {
+            background: #d32f2f;
+            color: white;
+            transform: scale(1.05);
+            border: 4px solid #ffeb3b;
+            box-shadow: 0 0 40px #ff6b6b;
+        }
+        
+        /* ВСПЛЫВАЮЩЕЕ ОПИСАНИЕ */
+        .wheel-item::after {
+            content: attr(data-description);
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 100;
+            pointer-events: none;
+            border: 2px solid #ffeb3b;
+        }
+        
+        .wheel-item:hover::after {
+            opacity: 1;
+            visibility: visible;
+            bottom: 120%;
+        }
+        
+        .spin-btn {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 22px 60px;
+            font-size: 32px;
+            font-weight: 800;
+            border-radius: 80px;
+            cursor: pointer;
+            margin: 30px 0;
+            transition: 0.2s;
+            box-shadow: 0 12px 0 #8b1e1e, 0 15px 40px rgba(211,47,47,0.4);
+            border: 3px solid white;
+            letter-spacing: 6px;
+        }
+        
+        .spin-btn:hover {
+            transform: translateY(6px);
+            box-shadow: 0 6px 0 #8b1e1e, 0 20px 40px rgba(211,47,47,0.5);
+        }
+        
+        .spin-btn:active {
+            transform: translateY(12px);
+            box-shadow: 0 0 0 #8b1e1e, 0 20px 40px rgba(211,47,47,0.5);
+        }
+        
+        .result-area {
+            margin-top: 40px;
+            padding: 30px;
+            background: #fff8e1;
+            border-radius: 48px;
+            border: 3px dashed #d32f2f;
+        }
+        
+        .winning-prize {
+            font-size: 52px;
+            font-weight: 900;
+            color: #d32f2f;
+            margin: 20px 0;
+            background: white;
+            padding: 25px;
+            border-radius: 60px;
+            border: 4px solid #ffb74d;
+            word-break: break-word;
+        }
+        
+        .prize-description {
+            font-size: 22px;
+            color: #5d4037;
+            background: #ffebee;
+            padding: 20px;
+            border-radius: 40px;
+            margin-top: 20px;
+            font-style: italic;
+            border-left: 10px solid #d32f2f;
+            text-align: left;
+        }
+        
+        @media (max-width: 600px) {
+            .wheel-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .spin-btn {
+                font-size: 24px;
+                padding: 18px 30px;
+            }
+            
+            .winning-prize {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">🏠 Встреча</a>
+        <a href="quiz.html">🧠 Испытание</a>
+        <a href="music.html">🎵 Волна</a>
+        <a href="wheel.html" class="active">🎡 Фортуна</a>
+        <a href="code.html">💻 Секретный код</a>
+    </div>
+
+    <div class="container">
+        <h2>🎡 КОЛЕСО СВИДАНИЙ</h2>
+        
+        <div class="wheel-simple">
+            
+            <div class="prize-label">🎲 СЛУЧАЙНЫЙ ПРИЗ</div>
+            
+            <!-- СЕТКА С ВАРИАНТАМИ -->
+            <div class="wheel-items">
+                <div class="wheel-item" data-id="0" data-description="🍿 Плед, проектор, твои любимые вкусняшки. Я приношу попкорн — ты выбираешь фильм.">
+                    🍿 Кино дома
+                </div>
+                <div class="wheel-item" data-id="1" data-description="🍷 Новое место, где мы ещё не были. Столик уже забронирован — осталось выбрать дату.">
+                    🍷 Новый ресторан
+                </div>
+                <div class="wheel-item" data-id="2" data-description="🎁 Полная неожиданность. Ты узнаёшь всё за час до выхода. Доверься мне ❤️">
+                    🎁 Сюрприз
+                </div>
+                <div class="wheel-item" data-id="3" data-description="🛋️ Лежать, обниматься, тупить, заказать еду. Без чувства вины. Самый важный пункт.">
+                    🛋️ Лежать
+                </div>
+                <div class="wheel-item" data-id="4" data-description="🌳 Наше место. Или новое. Рука в руке, кофе с собой, разговоры ни о чём.">
+                    🌳 Прогулка
+                </div>
+                <div class="wheel-item" data-id="5" data-description="🃏 Ты придумываешь свидание сама. Любое. Я оплачиваю и не ною. Честно.">
+                    🃏 Джокер
+                </div>
+            </div>
+            
+            <!-- КНОПКА -->
+            <button id="spinBtn" class="spin-btn">🎡 КРУТИТЬ</button>
+            
+            <!-- РЕЗУЛЬТАТ -->
+            <div class="result-area">
+                <h3 style="font-size: 28px; color: #b71c1c; margin-bottom: 20px;">ТЕБЕ ВЫПАЛО:</h3>
+                <div id="winnerDisplay" class="winning-prize"></div>
+                <div id="winnerDescription" class="prize-description"></div>
+                <p style="font-size: 22px; margin-top: 30px; color: #5d4037; font-weight: 600;">
+                    ❤️ Дата и время — на твой выбор. Просто скажи когда ❤️
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.wheel-item');
+        const spinBtn = document.getElementById('spinBtn');
+        const winnerDisplay = document.getElementById('winnerDisplay');
+        const winnerDescription = document.getElementById('winnerDescription');
+        
+        // МАССИВ С ВАРИАНТАМИ И ОПИСАНИЯМИ
+        const prizes = [
+            {
+                name: '🍿 Кино дома',
+                desc: '🍿 Плед, проектор, твои любимые вкусняшки. Я приношу попкорн — ты выбираешь фильм.'
+            },
+            {
+                name: '🍷 Новый ресторан',
+                desc: '🍷 Новое место, где мы ещё не были. Столик уже забронирован — осталось выбрать дату.'
+            },
+            {
+                name: '🎁 Сюрприз',
+                desc: '🎁 Полная неожиданность. Ты узнаёшь всё за час до выхода. Доверься мне ❤️'
+            },
+            {
+                name: '🛋️ Лежать',
+                desc: '🛋️ Лежать, обниматься, тупить, заказать еду. Без чувства вины. Самый важный пункт.'
+            },
+            {
+                name: '🌳 Прогулка',
+                desc: '🌳 Наше место. Или новое. Рука в руке, кофе с собой, разговоры ни о чём.'
+            },
+            {
+                name: '🃏 Джокер',
+                desc: '🃏 Ты придумываешь свидание сама. Любое. Я оплачиваю и не ною. Честно.'
+            }
+        ];
+        
+        // ФУНКЦИЯ КРУТКИ
+        function spinWheel() {
+            // Убираем подсветку у всех
+            items.forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Выбираем случайный индекс
+            const randomIndex = Math.floor(Math.random() * prizes.length);
+            
+            // Подсвечиваем выбранный
+            items[randomIndex].classList.add('selected');
+            
+            // Показываем результат и описание
+            winnerDisplay.textContent = prizes[randomIndex].name;
+            winnerDescription.textContent = prizes[randomIndex].desc;
+        }
+        
+        // КРУТИМ ПО КЛИКУ
+        spinBtn.addEventListener('click', spinWheel);
+        
+        // ПРИ ЗАГРУЗКЕ - ПЕРВЫЙ ВАРИАНТ ПОДСВЕЧЕН
+        window.onload = function() {
+            items[0].classList.add('selected');
+            winnerDisplay.textContent = prizes[0].name;
+            winnerDescription.textContent = prizes[0].desc;
+        };
+    </script>
+</body>
+</html>
