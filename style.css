@@ -40,6 +40,11 @@ body {
     color: white;
 }
 
+.nav a[href="code.html"] {
+    background: #ff4757;
+    color: white;
+}
+
 .container {
     max-width: 800px;
     margin: 40px auto;
@@ -97,7 +102,6 @@ h1 {
     line-height: 1.8;
 }
 
-/* КВИЗ */
 .quiz-card {
     background: white;
     padding: 30px;
@@ -169,7 +173,6 @@ h1 {
     transform: scale(1.05);
 }
 
-/* МУЗЫКА */
 .playlist {
     display: flex;
     flex-direction: column;
@@ -215,7 +218,6 @@ audio {
     color: #b71c1c;
 }
 
-/* КОЛЕСО */
 canvas {
     display: block;
     margin: 20px auto;
@@ -264,36 +266,198 @@ canvas {
     color: #5d4037;
 }
 
-/* адаптация */
+/* ========== АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ ========== */
 @media (max-width: 600px) {
     .nav {
-        gap: 10px;
-        padding: 15px 10px;
+        gap: 8px;
+        padding: 12px 10px;
         flex-wrap: wrap;
+        justify-content: center;
     }
     
     .nav a {
-        font-size: 14px;
+        font-size: 13px;
         padding: 6px 12px;
+        margin: 2px;
+        flex: 0 1 auto;
+        white-space: nowrap;
+    }
+    
+    .nav a[href="code.html"] {
+        background: #ff4757;
+        color: white;
+        flex: 0 1 auto;
     }
     
     h1 {
-        font-size: 36px;
+        font-size: 32px;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    
+    .title {
+        font-size: 32px;
+        margin-bottom: 10px;
     }
     
     .container {
-        margin: 20px;
-        padding: 20px;
+        margin: 15px 10px;
+        padding: 20px 15px;
+        border-radius: 24px;
+        width: calc(100% - 20px);
     }
     
     .photo-frame {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
+        margin: 20px auto;
+        border-radius: 24px;
+        border-width: 4px;
+    }
+    
+    .main-text {
+        font-size: 16px;
+        padding: 0 5px;
+    }
+    
+    .quiz-card {
+        padding: 20px 15px;
+        margin: 20px 0;
+    }
+    
+    .quiz-btn {
+        padding: 14px 16px;
+        font-size: 15px;
+        margin: 10px 0;
+        border-radius: 50px;
+    }
+    
+    .result-message {
+        padding: 16px;
+        font-size: 16px;
+    }
+    
+    .comment {
+        font-size: 14px;
+    }
+    
+    .next-link {
+        padding: 12px 30px;
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .playlist {
+        gap: 20px;
+        padding: 10px 0;
+    }
+    
+    .track {
+        padding: 18px 16px;
+    }
+    
+    .track-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .track-memo {
+        font-size: 14px;
+    }
+    
+    .vinyl {
+        padding: 16px;
+        font-size: 15px;
+        border-radius: 60px;
+    }
+    
+    .spin-btn {
+        padding: 14px 32px;
+        font-size: 20px;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .wheel-win {
+        font-size: 36px;
+        word-break: break-word;
+    }
+    
+    .wheel-date {
+        font-size: 16px;
+    }
+    
+    .quiz-result {
+        padding: 30px 15px;
     }
 }
 
-/* ДЛЯ СТРАНИЦЫ КОДА */
-.nav a[href="code.html"] {
-    background: #ff4757;
-    color: white;
+/* ========== ДОПОЛНИТЕЛЬНО ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ ========== */
+@media (max-width: 380px) {
+    .nav {
+        gap: 5px;
+    }
+    
+    .nav a {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .title {
+        font-size: 28px;
+    }
+    
+    .photo-frame {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .quiz-btn {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+    
+    .spin-btn {
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+    
+    .wheel-win {
+        font-size: 30px;
+    }
+}
+
+/* ========== ДЛЯ ПЛАНШЕТОВ ========== */
+@media (min-width: 601px) and (max-width: 992px) {
+    .container {
+        margin: 30px 25px;
+        padding: 25px;
+        max-width: none;
+    }
+    
+    h1 {
+        font-size: 42px;
+    }
+    
+    .photo-frame {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* ========== ДЛЯ БОЛЬШИХ ЭКРАНОВ ========== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 900px;
+    }
+    
+    .photo-frame {
+        width: 300px;
+        height: 300px;
+    }
 }
